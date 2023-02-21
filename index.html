@@ -33,16 +33,17 @@
 			<p>Are you willing to try?</p>
 		</header>
 		<section id="gameCanvas">
-			<form>
-				<label for="name">What's your name?</label>
-				<input type="text">
+			<form id="gameForm">
+				<label for="name">What's your name</label>
+				<input type="text" id="name">
 				<label for="category">Choose difficulty</label>
-				<input type="radio">
+				<input type="radio" name="diff" value="easy" checked>
 				<label for="easy">Easy</label>
-				<input type="radio">
+				<input type="radio" name="diff" value="medium">
 				<label for="med">Medium</label>
-				<input type="radio">
+				<input type="radio" name="diff" value="hard">
 				<label for="hard">Hard</label>
+				<button type="submit" id="sub">Start the Quiz!</button>
 			</form>
 		</section>
 		<footer>Trivia Game &copy; Group 1 2023</footer>
