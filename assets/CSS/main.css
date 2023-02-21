@@ -1,7 +1,68 @@
 :root{
-    --rich-black: #0e131fff;
-    --green-blue: #306bacff;
-    --cornflower-blue: #6f9cebff;
-    --jordy-blue: #98b9f2ff;
-    --tropical-indigo: #918ef4ff;
+    --darkBlue1: #0e131fff;
+    --darkBlue2: #306bacff;
+    --mediumBlue: #6f9cebff;
+    --lightBlue1: #98b9f2ff;
+    --lightBlue2: #918ef4ff;
+
+    --paddingSm: 0.5em;
+    --paddingMd: calc(var(--paddingSm) * 1.5);
+    --paddingLg: calc(var(--paddingMd) * 1.5);
+
+    --boxShadow:  rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+    background-color: none;
+    font-size: var(--paddingMd);
+    font-family: 'Roboto', sans-serif; 
+    color: var(--lightBlue1);
+}
+
+/* Style the navigation menu */
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: var(--darkBlue1);
+    position: relative;
+  }
+
+  #title {
+    font-family: 'Shantell Sans', cursive;
+  }
+  
+  /* Hide the links in nav menu  */
+  nav #myLinks {
+    display: none;
+  }
+  
+  /* Style nav menu links */
+  nav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  /* Style the burger menu */
+  nav a #menu {
+    ;
+  }
+  
+  /* Add grey background on hover */
+  nav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Style home link */
+  #home {
+    background-color: #04AA6D;
+    color: white;
+  }
