@@ -53,6 +53,16 @@ const saveQuestions = (questions) => {
   localStorage.setItem("questions", JSON.stringify(questions));
 };
 
+const shuffleAnswers = (array) => {
+  let index = array.length;
+  while (index != 0) {
+    randomIndex = Math.floor(Math.random() * index);
+    index--;
+    [array[index], array[randomIndex]] = [array[randomIndex], array[index]];
+  }
+  return array;
+};
+
 const errorHandler = () => {
   console.log("error");
 };
