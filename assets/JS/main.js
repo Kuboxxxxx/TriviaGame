@@ -1,17 +1,61 @@
+//API stuff
+const TRIVIA_URL = "https://the-trivia-api.com/api/questions?limit=20";
+
 //getting DOM elements
-const name = document.getElementById("name")
-const easyDiff = document.getElementById("easy")
-const medDiff = document.getElementById("med")
-const hardDiff = document.getElementById("hard")
-const formBtn = document.getElementById("sub")
+const name = document.getElementById("name");
+const formBtn = document.getElementById("sub");
 
 //starts game
 
 const startGame = (event) => {
-    event.preventDefault()
-    console.log("START GAME")
-}
+  event.preventDefault();
+  getQuestions();
+};
 
+const getQuestions = async () => {
+  try {
+    const diff = document.querySelector(
+      "input[type='radio'][name=diff]:checked"
+    ).value;
+
+    const respone = await fetch(`${TRIVIA_URL}&difficulty=${diff}`);
+
+    if (respone.status !== 200) {
+      errorHandler();
+    } else {
+      const questions = await respone.json();
+      saveQuestions(questions);
+      renderQuestion();
+    }
+  } catch (error) {
+    errorHandler();
+  }
+};
+
+const renderQuestion = () => {
+  let questions = JSON.parse(localStorage.getItem("questions"));
+
+  const gameCanvas = document.getElementById("gameCanvas");
+
+  gameCanvas.innerHTML = `<div>
+  <div>${questions[0].category}</div>
+  <div>${questions[0].question}</div>
+</div>
+<div>
+  <button>${questions[0].correctAnswer}</button>
+  <button>${questions[0].incorrectAnswers[0]}</button>
+  <button>${questions[0].incorrectAnswers[1]}</button>
+  <button>${questions[0].incorrectAnswers[2]}</button>
+</div>`;
+};
+
+const saveQuestions = (questions) => {
+  localStorage.setItem("questions", JSON.stringify(questions));
+};
+
+const errorHandler = () => {
+  console.log("error");
+};
 //starts game when button pressed
 
-formBtn.addEventListener("click", startGame)
+formBtn.addEventListener("click", startGame);

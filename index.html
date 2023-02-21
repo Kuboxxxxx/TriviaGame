@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/CSS/main.css">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./assets/CSS/main.css">
+	<title>Document</title>
 </head>
+
 <body>
-    <main>
-        <nav>
-            <h1>TRIVIA</h1>
-        </nav>
-        <header>
-            <p>Can you answer 20 questions in a row? Are you willing to try?</p>
-        </header>
-        <section id="gameCanvas">
-            <form id="gameForm">
-                <label for="name">What's your name</label>
-                <input type="text" id="name">
-                <label for="category">Choose difficulty</label>
-                <input type="radio" id="easy" checked>
-                <label for="easy">Easy</label>
-                <input type="radio" id="med">
-                <label for="med">Medium</label>
-                <input type="radio" id="hard">
-                <label for="hard">Hard</label>
-                <button type="submit" id="sub">Start the Quiz!</button>
-            </form>
-        </section>
-        <footer>Trivia Game &copy; Group 1 2023</footer>
-    </main>
-    <script src="./assets/JS/main.js"></script>
+	<main>
+		<nav>
+			<h1>TRIVIA</h1>
+		</nav>
+		<header>
+			<p>Can you answer 20 questions in a row? Are you willing to try?</p>
+		</header>
+		<section id="gameCanvas">
+			<form id="gameForm">
+				<label for="name">What's your name</label>
+				<input type="text" id="name">
+				<label for="category">Choose difficulty</label>
+				<input type="radio" name="diff" value="easy" checked>
+				<label for="easy">Easy</label>
+				<input type="radio" name="diff" value="medium">
+				<label for="med">Medium</label>
+				<input type="radio" name="diff" value="hard">
+				<label for="hard">Hard</label>
+				<button type="submit" id="sub">Start the Quiz!</button>
+			</form>
+		</section>
+		<footer>Trivia Game &copy; Group 1 2023</footer>
+	</main>
+	<script src="./assets/JS/main.js"></script>
 </body>
+
 </html>
