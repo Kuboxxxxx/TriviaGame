@@ -9,6 +9,7 @@ const formBtn = document.getElementById("sub");
 const gameState = {
   name: "",
   score: 0,
+  diff: "",
   questionNum: 0,
 };
 //starts game
@@ -160,7 +161,11 @@ const renderFinalScreen = () => {
 const makeSaveFile = () => {
   const nameInput = document.getElementById("name");
   const name = nameInput.value;
+  const diff = document.querySelector(
+    "input[type='radio'][name=diff]:checked"
+  ).value;
   gameState.name = name;
+  gameState.diff = diff;
 };
 
 const saveSaveFile = () => {
