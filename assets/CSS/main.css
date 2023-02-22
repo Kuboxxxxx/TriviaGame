@@ -18,7 +18,7 @@
     padding: 0;
     max-width: 100vw;
     background-color: none;
-    font-size: var(--paddingMd);
+    font-size: var(n--paddigMd);
     font-family: 'Roboto', sans-serif; 
     color: var(--lightBlue1);
 }
