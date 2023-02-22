@@ -7,13 +7,15 @@ const formBtn = document.getElementById("sub");
 
 //Game score
 const gameState = {
+  name: "",
   score: 0,
   questionNum: 0,
-}
+};
 //starts game
 
 const startGame = (event) => {
   event.preventDefault();
+  makeSaveFile();
   getQuestions();
 };
 
@@ -30,6 +32,7 @@ const getQuestions = async () => {
     } else {
       const questions = await respone.json();
       saveQuestions(questions);
+      removeForm();
       renderQuestion(gameState.questionNum);
     }
   } catch (error) {
@@ -37,28 +40,56 @@ const getQuestions = async () => {
   }
 };
 
+const removeForm = () => {
+  const gameForm = document.getElementById("gameForm");
+  gameForm.remove();
+};
+
+const clearQuestion = () => {
+  const gameContent = document.getElementById("gameContent");
+  gameContent.innerHTML = "";
+};
+
 const renderQuestion = (questionNum) => {
-  let questions = JSON.parse(localStorage.getItem("questions"));
+  const questions = JSON.parse(localStorage.getItem("questions"));
 
-  let correctAnswer = questions[questionNum].correctAnswer
+  const correctAnswer = questions[questionNum].correctAnswer;
 
-  let answers = [questions[questionNum].correctAnswer,questions[questionNum].incorrectAnswers[0],questions[questionNum].incorrectAnswers[1],questions[questionNum].incorrectAnswers[2]]
-  
-  shuffleAnswers(answers)
+  const answers = [
+    questions[questionNum].correctAnswer,
+    questions[questionNum].incorrectAnswers[0],
+    questions[questionNum].incorrectAnswers[1],
+    questions[questionNum].incorrectAnswers[2],
+  ];
 
-  const gameCanvas = document.getElementById("gameCanvas");
-  
-  gameCanvas.innerHTML = `<div>
-  <div>Question number ${gameState.questionNum+1}</div>
-  <div>${questions[questionNum].category}</div>
-  <div>${questions[questionNum].question}</div>
-</div>
-<div id="test">
-  <button onclick="checkAnswer('${answers[0]}','${correctAnswer}')">${answers[0]}</button>
-  <button onclick="checkAnswer('${answers[1]}','${correctAnswer}')">${answers[1]}</button>
-  <button onclick="checkAnswer('${answers[2]}','${correctAnswer}')">${answers[2]}</button>
-  <button onclick="checkAnswer('${answers[3]}','${correctAnswer}')">${answers[3]}</button>
-</div>`;
+  shuffleAnswers(answers);
+
+  const questionsDiv = document.createElement("div");
+
+  const categoryDiv = document.createElement("div");
+  categoryDiv.textContent = questions[questionNum].category;
+
+  const questionDiv = document.createElement("div");
+  questionDiv.textContent = questions[questionNum].question;
+
+  questionsDiv.append(categoryDiv, questionDiv);
+
+  const answersDiv = document.createElement("div");
+
+  answers.forEach((answer) => {
+    const handleAnswer = () => {
+      checkAnswer(answer, correctAnswer);
+    };
+
+    const button = document.createElement("button");
+    button.textContent = answer;
+    button.addEventListener("click", handleAnswer);
+    answersDiv.append(button);
+  });
+
+  const gameContent = document.getElementById("gameContent");
+
+  gameContent.append(questionsDiv, answersDiv);
 };
 
 const saveQuestions = (questions) => {
@@ -76,26 +107,67 @@ const shuffleAnswers = (array) => {
 };
 
 const checkAnswer = (answer, correct) => {
-  if(answer == correct){
-    gameState.score++
-    gameState.questionNum++
-    if(gameState.questionNum<20){
-      renderQuestion(gameState.questionNum)
+  if (answer == correct) {
+    gameState.score++;
+    gameState.questionNum++;
+    if (gameState.questionNum < 20) {
+      clearQuestion();
+      renderQuestion(gameState.questionNum);
+    } else {
+      clearQuestion();
+      renderFinalScreen();
+      saveSaveFile();
     }
-    else{
-      console.log(`Your final score is ${gameState.score}`)
+  } else {
+    gameState.questionNum++;
+    if (gameState.questionNum < 20) {
+      clearQuestion();
+      renderQuestion(gameState.questionNum);
+    } else {
+      clearQuestion();
+      renderFinalScreen();
+      saveSaveFile();
     }
   }
-  else{
-    gameState.questionNum++
-    if(gameState.questionNum<20){
-      renderQuestion(gameState.questionNum)
-    }
-    else{
-      console.log(`Your final score is ${gameState.score}`)
-    }
-  }
-}
+};
+
+const refreshPage = () => {
+  window.location.reload();
+};
+
+const renderFinalScreen = () => {
+  const gameContent = document.getElementById("gameContent");
+
+  const finalMsgDiv = document.createElement("div");
+  finalMsgDiv.textContent = `Well done ${gameState.name}, your final score is ${gameState.score}`;
+
+  const goBackBtn = document.createElement("button");
+  goBackBtn.textContent = "Try again";
+
+  goBackBtn.addEventListener("click", refreshPage);
+
+  const scoresLink = document.createElement("a");
+  scoresLink.setAttribute("href", "./scores.html");
+
+  const seeScoresBtn = document.createElement("button");
+  seeScoresBtn.textContent = "See your scores";
+
+  scoresLink.append(seeScoresBtn);
+
+  gameContent.append(finalMsgDiv, goBackBtn, scoresLink);
+};
+
+const makeSaveFile = () => {
+  const nameInput = document.getElementById("name");
+  const name = nameInput.value;
+  gameState.name = name;
+};
+
+const saveSaveFile = () => {
+  const saves = JSON.parse(localStorage.getItem("saves")) || [];
+  saves.push(gameState);
+  localStorage.setItem("saves", JSON.stringify(saves));
+};
 
 const errorHandler = () => {
   console.log("error");
