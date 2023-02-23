@@ -144,8 +144,8 @@ const renderFinalScreen = () => {
   const gameContent = document.getElementById("gameContent");
 
   const finalMsgDiv = document.createElement("div");
+  finalMsgDiv.setAttribute("class", "form-label text-center");
   finalMsgDiv.textContent = `Well done ${gameState.name}, your final score is ${gameState.score}`;
-  finalMsgDiv.classList.add("form-label text-center");
 
   const goBackBtn = document.createElement("button");
   goBackBtn.classList.add("button");
