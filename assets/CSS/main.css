@@ -1,68 +1,157 @@
-:root{
-    --darkBlue1: #0e131fff;
-    --darkBlue2: #306bacff;
-    --mediumBlue: #6f9cebff;
-    --lightBlue1: #98b9f2ff;
-    --lightBlue2: #918ef4ff;
+:root {
+  --darkBlue1: #0e131f;
+  --lightBlue1: #bdffff;
 
-    --paddingSm: 0.5em;
-    --paddingMd: calc(var(--paddingSm) * 1.5);
-    --paddingLg: calc(var(--paddingMd) * 1.5);
+  --paddingSm: 1em;
+  --paddingMd: calc(var(--paddingSm) * 1.5);
+  --paddingLg: calc(var(--paddingMd) * 1.5);
 
-    --boxShadow:  rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  --boxShadow: 0px 1px 2px 0px rgba(152, 185, 242, 0.7),
+    1px 2px 4px 0px rgba(152, 185, 242, 0.7),
+    2px 4px 8px 0px rgba(152, 185, 242, 0.7),
+    2px 4px 16px 0px rgba(152, 185, 242, 0.7);
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    max-width: 100vw;
-    background-color: none;
-    font-size: var(n--paddigMd);
-    font-family: 'Roboto', sans-serif; 
-    color: var(--lightBlue1);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  background-color: none;
+  font-family: "Chakra Petch", sans-serif;
+  color: var(--lightBlue1);
+}
+
+#root {
+  background-color: var(--darkBlue1);
+  min-height: 100vh;
 }
 
 /* Style the navigation menu */
-nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    background-color: var(--darkBlue1);
-    position: relative;
-  }
+.navBar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: var(--darkBlue1);
+  position: relative;
+  width: 100vw;
+  padding: var(--paddingMd);
+}
 
-  #title {
-    font-family: 'Shantell Sans', cursive;
-  }
-  
-  /* Hide the links in nav menu  */
-  nav #myLinks {
-    display: none;
-  }
-  
-  /* Style nav menu links */
-  nav a {
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    display: block;
-  }
-  
-  /* Style the burger menu */
-  nav a #menu {
-    ;
-  }
-  
-  /* Add grey background on hover */
-  nav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Style home link */
-  #home {
-    background-color: #04AA6D;
-    color: white;
-  }
+.navBar a {
+  font-size: var(--paddingMd);
+  text-shadow: 8px 5px 6px rgba(111, 156, 235, 1);
+  color: var(--lightBlue1);
+}
+
+#title {
+  font-family: "Tourney", cursive;
+  -webkit-text-fill-color: var(--lightBlue1);
+  color: var(--lightBlue1);
+  text-shadow: 8px 5px 6px rgba(111, 156, 235, 1);
+  font-weight: 900;
+  font-size: var(--paddingLg);
+}
+
+/* Hide the links in nav menu  */
+#myLinks {
+  display: none;
+}
+
+/* Style nav menu links */
+#mylinks a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: var(--paddingMd);
+  display: block;
+}
+
+/* Add nav hover style*/
+.navBar a:hover {
+  color: var(--darkBlue1);
+}
+
+/* Style the header*/
+.hero {
+  /*padding: var(--paddingMd);*/
+  display: flex;
+  justify-content: center;
+  padding: var(--paddingMd);
+}
+
+.hero p {
+  color: var(--lightBlue1);
+  font-size: var(--paddingMd);
+  text-align: center;
+  font-weight: 600;
+  font-family: "Tourney", cursive;
+  width: 90vw;
+  padding: var(--paddingSm);
+  box-shadow: var(--boxShadow);
+  border-radius: 25px;
+}
+
+/* Style the Form*/
+#gameCanvas {
+  display: flex;
+  justify-content: center;
+  padding: var(--paddingMd);
+}
+
+#gameForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--paddingSm);
+  padding: var(--paddingMd);
+  width: 80vw;
+  box-shadow: var(--boxShadow);
+  border-radius: 25px;
+  height: 100%;
+}
+
+#gameForm label {
+  color: var(--lightBlue1);
+  font-size: var(--paddingMd);
+}
+
+#playerName,
+#difficulty {
+  font-weight: 800;
+}
+
+/* input[type="radio"] { */
+/* } */
+
+/*Style submit button*/
+.button {
+  width: fit-content;
+  align-self: center;
+  color: #6f9ceb;
+  background-color: #0e131f;
+  border: 6px solid #6f9ceb;
+  border-radius: 15px;
+  padding: 5px 15px;
+  font-size: var(--paddingMd);
+  font-family: "Chakra Petch", sans-serif;
+  letter-spacing: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  filter: drop-shadow(0 0 10px #6f9ceb) drop-shadow(0 0 10px #6f9ceb)
+    contrast(2) brightness(2);
+  transition: 0.5s;
+}
+
+.button:hover {
+  color: #0e131f;
+  background-color: #6f9ceb;
+  filter: drop-shadow(0 0 10px #6f9ceb) contrast(2) brightness(2);
+}
+/* footer style */
+footer {
+  background-color: var(--darkBlue1);
+  text-align: center;
+  padding: var(--paddingMd);
+}

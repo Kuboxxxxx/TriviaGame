@@ -1,53 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Shantell+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="./assets/CSS/main.css">
-	<title>TriviaQuiz</title>
-</head>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Tourney:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
-	<main>
-		<nav>
-			<a href="#homeIcon"><i class="fa-solid fa-house"></i></a>
-			<a #title>Trivia Quiz</a>
-			<div id="myLinks">
-				<a href="#timeout">Timeout Mode</a>
-				<a href="#help">Help</a>
-				<a href="#about">About</a>
-				<a href="#menuIcon"><i class="fa-solid fa-caret-down"></i>
-			</div>
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa-solid fa-caret-down"></i></a>
-		</nav>
-		<header>
-			<p>Can you answer 20 questions in a row? </p>
-			<p>Are you willing to try?</p>
-		</header>
-		<section id="gameCanvas">
-			<form id="gameForm">
-				<label for="name">What's your name</label>
-				<input type="text" id="name">
-				<label for="category">Choose difficulty</label>
-				<input type="radio" name="diff" value="easy" checked>
-				<label for="easy">Easy</label>
-				<input type="radio" name="diff" value="medium">
-				<label for="med">Medium</label>
-				<input type="radio" name="diff" value="hard">
-				<label for="hard">Hard</label>
-				<button type="submit" id="sub">Start the Quiz!</button>
-			</form>
-			<div id="gameContent"></div>
-		</section>
-		<footer>Trivia Game &copy; Group 1 2023</footer>
-	</main>
-	<script src="https://kit.fontawesome.com/30187da048.js" crossorigin="anonymous"></script>
-	<script src="./assets/JS/main.js"></script>
-</body>
+    <!--CSS Stylesheet-->
+    <link rel="stylesheet" href="./assets/CSS/main.css" />
+    <title>Trivia Quiz</title>
+  </head>
 
+  <body>
+    <div id="root">
+      <header class="navContainer">
+        <nav class="navBar">
+          <a href="#homeIcon"><i class="fa-solid fa-house"></i></a>
+          <a id="title">Trivia Quiz</a>
+          <div id="myLinks">
+            <a href="#timeout">Timeout Mode</a>
+            <a href="#help">Help</a>
+            <a href="#about">About</a>
+          </div>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()"
+            ><i class="fa-solid fa-caret-down"></i
+          ></a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <p>Can you answer 20 questions in a row?</p>
+        </section>
+        <section id="gameCanvas">
+          <form id="gameForm">
+            <label id="playerName" for="name">Player Name:</label>
+            <input type="text" id="name" />
+            <label id="difficulty" for="category">Difficulty:</label>
+            <input type="radio" name="diff" value="easy" checked />
+            <label for="easy">Easy</label>
+            <input type="radio" name="diff" value="medium" />
+            <label for="med">Medium</label>
+            <input type="radio" name="diff" value="hard" />
+            <label for="hard">Hard</label>
+            <button class="button" type="submit" id="sub">Begin!</button>
+          </form>
+        </section>
+      </main>
+
+      <footer>Trivia Game &copy; Group 1 2023</footer>
+
+      <script
+        src="https://kit.fontawesome.com/30187da048.js"
+        crossorigin="anonymous"
+      ></script>
+      <script src="./assets/JS/main.js"></script>
+    </div>
+  </body>
 </html>
