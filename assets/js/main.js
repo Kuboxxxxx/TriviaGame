@@ -12,6 +12,7 @@ const gameState = {
   diff: "",
   questionNum: 0,
 };
+let time = 60
 //starts game
 
 const startGame = (event) => {
@@ -66,6 +67,7 @@ const renderQuestion = (questionNum) => {
   shuffleAnswers(answers);
 
   const questionsDiv = document.createElement("div");
+  questionsDiv.setAttribute("class", "form-label text-center");
 
   const categoryDiv = document.createElement("div");
   categoryDiv.textContent = questions[questionNum].category;
@@ -76,6 +78,7 @@ const renderQuestion = (questionNum) => {
   questionsDiv.append(categoryDiv, questionDiv);
 
   const answersDiv = document.createElement("div");
+  answersDiv.setAttribute("class", "list-group");
 
   answers.forEach((answer) => {
     const handleAnswer = () => {
@@ -180,6 +183,18 @@ const saveSaveFile = () => {
 const errorHandler = (error) => {
   console.error(error);
 };
+
+const countdown = () => {
+  const timerDisplay = document.getElementById("timer")
+  timerDisplay.innerHTML = time;
+  time--
+  if(time == -1){
+    clearInterval(timer)
+    timerDisplay.innerHTML = "Time out!"
+  }
+};
+
+const timer = setInterval(countdown,1000)
 
 //starts game when button pressed
 formBtn.addEventListener("click", startGame);
