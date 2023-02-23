@@ -142,6 +142,8 @@
   filter: drop-shadow(0 0 10px #6f9ceb) drop-shadow(0 0 10px #6f9ceb)
     contrast(2) brightness(2);
   transition: 0.5s;
+  display: block;
+  margin-top: 18px;
 }
 
 .button:hover {

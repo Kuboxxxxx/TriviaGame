@@ -37,7 +37,7 @@ const getQuestions = async () => {
       renderQuestion(gameState.questionNum);
     }
   } catch (error) {
-    errorHandler();
+    errorHandler(error);
   }
 };
 
@@ -84,6 +84,7 @@ const renderQuestion = (questionNum) => {
 
     const button = document.createElement("button");
     button.textContent = answer;
+    button.classList.add("button");
     button.addEventListener("click", handleAnswer);
     answersDiv.append(button);
   });
@@ -143,6 +144,7 @@ const renderFinalScreen = () => {
   finalMsgDiv.textContent = `Well done ${gameState.name}, your final score is ${gameState.score}`;
 
   const goBackBtn = document.createElement("button");
+  goBackBtn.classList.add("button");
   goBackBtn.textContent = "Try again";
 
   goBackBtn.addEventListener("click", refreshPage);
@@ -151,6 +153,7 @@ const renderFinalScreen = () => {
   scoresLink.setAttribute("href", "./scores.html");
 
   const seeScoresBtn = document.createElement("button");
+  seeScoresBtn.classList.add("button");
   seeScoresBtn.textContent = "See your scores";
 
   scoresLink.append(seeScoresBtn);
@@ -174,8 +177,8 @@ const saveSaveFile = () => {
   localStorage.setItem("saves", JSON.stringify(saves));
 };
 
-const errorHandler = () => {
-  console.log("error");
+const errorHandler = (error) => {
+  console.error(error);
 };
 
 //starts game when button pressed

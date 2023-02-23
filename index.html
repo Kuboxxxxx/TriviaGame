@@ -1,67 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Tourney:wght@700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--CSS Stylesheet-->
-    <link rel="stylesheet" href="./assets/CSS/main.css" />
-    <title>Trivia Quiz</title>
-  </head>
+  <!--Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Tourney:wght@700&display=swap"
+    rel="stylesheet" />
 
-  <body>
-    <div id="root">
-      <header class="navContainer">
-        <nav class="navBar">
-          <a href="#homeIcon"><i class="fa-solid fa-house"></i></a>
-          <a id="title">Trivia Quiz</a>
-          <div id="myLinks">
-            <a href="#timeout">Timeout Mode</a>
-            <a href="#help">Help</a>
-            <a href="#about">About</a>
-          </div>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()"
-            ><i class="fa-solid fa-caret-down"></i
-          ></a>
-        </nav>
-      </header>
+  <!--CSS Stylesheet-->
+  <link rel="stylesheet" href="./assets/CSS/main.css" />
+  <title>Trivia Quiz</title>
+</head>
 
-      <main>
-        <section class="hero">
-          <p>Can you answer 20 questions in a row?</p>
-        </section>
-        <section id="gameCanvas">
-          <form id="gameForm">
-            <label id="playerName" for="name">Player Name:</label>
-            <input type="text" id="name" />
-            <label id="difficulty" for="category">Difficulty:</label>
-            <input type="radio" name="diff" value="easy" checked />
-            <label for="easy">Easy</label>
-            <input type="radio" name="diff" value="medium" />
-            <label for="med">Medium</label>
-            <input type="radio" name="diff" value="hard" />
-            <label for="hard">Hard</label>
-            <button class="button" type="submit" id="sub">Begin!</button>
-          </form>
-        </section>
-      </main>
+<body>
+  <div id="root">
+    <header class="navContainer">
+      <nav class="navBar">
+        <a href="#homeIcon"><i class="fa-solid fa-house"></i></a>
+        <a id="title">Trivia Quiz</a>
+        <div id="myLinks">
+          <a href="#timeout">Timeout Mode</a>
+          <a href="#help">Help</a>
+          <a href="#about">About</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa-solid fa-caret-down"></i></a>
+      </nav>
+    </header>
 
-      <footer>Trivia Game &copy; Group 1 2023</footer>
+    <main>
+      <section class="hero">
+        <p>Can you answer 20 questions in a row?</p>
+      </section>
+      <section id="gameCanvas">
+        <form id="gameForm">
+          <label id="playerName" for="name">Player Name:</label>
+          <input type="text" id="name" />
+          <label id="difficulty" for="category">Difficulty:</label>
+          <input type="radio" name="diff" value="easy" checked />
+          <label for="easy">Easy</label>
+          <input type="radio" name="diff" value="medium" />
+          <label for="med">Medium</label>
+          <input type="radio" name="diff" value="hard" />
+          <label for="hard">Hard</label>
+          <button class="button" type="submit" id="sub">Begin!</button>
+        </form>
+        <div id="gameContent"></div>
+      </section>
+    </main>
 
-      <script
-        src="https://kit.fontawesome.com/30187da048.js"
-        crossorigin="anonymous"
-      ></script>
-      <script src="./assets/JS/main.js"></script>
-    </div>
-  </body>
+    <footer>Trivia Game &copy; Group 1 2023</footer>
+
+    <script src="https://kit.fontawesome.com/30187da048.js" crossorigin="anonymous"></script>
+    <script src="./assets/JS/main.js"></script>
+  </div>
+</body>
+
 </html>
