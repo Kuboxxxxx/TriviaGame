@@ -12,7 +12,7 @@ const gameState = {
   diff: "",
   questionNum: 0,
 };
-let time = 60
+let time = 60;
 //starts game
 
 const startGame = (event) => {
@@ -145,6 +145,7 @@ const renderFinalScreen = () => {
 
   const finalMsgDiv = document.createElement("div");
   finalMsgDiv.textContent = `Well done ${gameState.name}, your final score is ${gameState.score}`;
+  finalMsgDiv.classList.add("form-label text-center");
 
   const goBackBtn = document.createElement("button");
   goBackBtn.classList.add("button");
@@ -185,16 +186,16 @@ const errorHandler = (error) => {
 };
 
 const countdown = () => {
-  const timerDisplay = document.getElementById("timer")
+  const timerDisplay = document.getElementById("timer");
   timerDisplay.innerHTML = time;
-  time--
-  if(time == -1){
-    clearInterval(timer)
-    timerDisplay.innerHTML = "Time out!"
+  time--;
+  if (time == -1) {
+    clearInterval(timer);
+    timerDisplay.innerHTML = "Time out!";
   }
 };
 
-const timer = setInterval(countdown,1000)
+const timer = setInterval(countdown, 1000);
 
 //starts game when button pressed
 formBtn.addEventListener("click", startGame);
