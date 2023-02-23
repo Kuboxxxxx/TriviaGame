@@ -1,63 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
 
-  <!--Fonts-->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Tourney:wght@700&display=swap"
-    rel="stylesheet" />
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Tourney:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!--CSS Stylesheet-->
-  <link rel="stylesheet" href="./assets/css/main.css" />
-  <title>Trivia Quiz</title>
-</head>
+    <!--CSS Stylesheet-->
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <title>Trivia Quiz</title>
+  </head>
 
-<body>
-  <div id="root">
-    <header class="navContainer">
-      <nav class="navBar">
-        <a href="#homeIcon"><i class="fa-solid fa-house"></i></a>
-        <a id="title">Trivia Quiz</a>
-        <div id="myLinks">
-          <a href="#timeout">Timeout Mode</a>
-          <a href="#help">Help</a>
-          <a href="#about">About</a>
-        </div>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa-solid fa-caret-down"></i></a>
-      </nav>
-    </header>
+  <body>
+    <div id="root">
+      <header class="navContainer">
+        <nav class="navBar">
+          <a href="#homeIcon"><i class="fa-solid fa-house"></i></a>
+          <a id="title">Trivia Quiz</a>
+          <div id="myLinks">
+            <a href="#timeout">Timeout Mode</a>
+            <a href="#help">Help</a>
+            <a href="#about">About</a>
+          </div>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()"
+            ><i class="fa-solid fa-caret-down"></i
+          ></a>
+        </nav>
+      </header>
 
-    <main>
-      <section class="hero">
-        <p>Can you answer 20 questions in a row?</p>
-      </section>
-      <section id="gameCanvas">
-        <form id="gameForm">
-          <label id="playerName" for="name">Player Name:</label>
-          <input type="text" id="name" />
-          <label id="difficulty" for="category">Difficulty:</label>
-          <input type="radio" name="diff" value="easy" checked />
-          <label for="easy">Easy</label>
-          <input type="radio" name="diff" value="medium" />
-          <label for="med">Medium</label>
-          <input type="radio" name="diff" value="hard" />
-          <label for="hard">Hard</label>
-          <button class="button" type="submit" id="sub">Begin!</button>
-        </form>
-        <div id="gameContent"></div>
-      </section>
-    </main>
+      <main>
+        <section class="hero">
+          <p>Can you answer 20 questions in a row?</p>
+        </section>
+        <section id="gameCanvas">
+          <form class="form" id="gameForm">
+            <div class="mb-3">
+              <label for="a" class="form-label">Player Name</label>
+              <input type="text" class="form-control" id="name" />
+            </div>
 
-    <footer>Trivia Game &copy; Group 1 2023</footer>
+            <div class="form-label" for="category">Difficulty</div>
 
-    <script src="https://kit.fontawesome.com/30187da048.js" crossorigin="anonymous"></script>
-    <script src="./assets/js/main.js"></script>
-  </div>
-</body>
+            <div class="form-check d-flex justify-content-between">
+              <label class="form-label" for="easy">Easy</label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="diff"
+                id="easy"
+                value="easy"
+                checked
+              />
+            </div>
 
+            <div class="form-check d-flex justify-content-between">
+              <label class="form-label" for="med">Medium</label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="diff"
+                id="med"
+                value="med"
+              />
+            </div>
+
+            <div class="form-check d-flex justify-content-between">
+              <label class="form-label" for="hard">Hard</label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="diff"
+                id="hard"
+                value="hard"
+              />
+            </div>
+
+            <button class="button" type="submit" id="sub">Begin!</button>
+          </form>
+          <div id="gameContent"></div>
+        </section>
+      </main>
+
+      <footer>Trivia Game &copy; Group 1 2023</footer>
+
+      <script
+        src="https://kit.fontawesome.com/30187da048.js"
+        crossorigin="anonymous"
+      ></script>
+      <script src="./assets/js/main.js"></script>
+    </div>
+  </body>
 </html>
