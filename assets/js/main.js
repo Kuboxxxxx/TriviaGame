@@ -17,8 +17,14 @@ let time = 60;
 
 const startGame = (event) => {
   event.preventDefault();
-  makeSaveFile();
-  getQuestions();
+  const name = document.getElementById("name")
+  if (!name.value){
+    alert("Please enter your name!")
+  }
+  else{
+    makeSaveFile();
+    getQuestions();
+  }
 };
 
 const getQuestions = async () => {

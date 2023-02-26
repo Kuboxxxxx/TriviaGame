@@ -41,39 +41,20 @@
         <p>Can you answer 20 questions in a row?</p>
       </section>
       <section id="gameCanvas">
-        <form class="form" id="gameForm">
-          <div class="mb-3">
-            <label for="a" class="form-label">Player Name</label>
-            <input type="text" class="form-control" id="name" required />
-          </div>
-
-          <div class="form-label" for="category">Difficulty</div>
-
-          <div class="form-check d-flex justify-content-between">
-            <label class="form-label" for="easy">Easy</label>
-            <input class="form-check-input" type="radio" name="diff" id="easy" value="easy" checked />
-          </div>
-
-          <div class="form-check d-flex justify-content-between">
-            <label class="form-label" for="med">Medium</label>
-            <input class="form-check-input" type="radio" name="diff" id="med" value="med" />
-          </div>
-
-          <div class="form-check d-flex justify-content-between">
-            <label class="form-label" for="hard">Hard</label>
-            <input class="form-check-input" type="radio" name="diff" id="hard" value="hard" />
-          </div>
-
-          <button class="button" type="submit" id="sub">Begin!</button>
-        </form>
-        <div id="gameContent"></div>
+        <table id="scores" class="table">
+          <tr>
+            <td>Name</td>
+            <td>Difficulty</td>
+            <td>Score</td>
+          </tr>
+        </table>
       </section>
     </main>
 
     <footer>Trivia Game &copy; Group 1 2023</footer>
 
     <script src="https://kit.fontawesome.com/30187da048.js" crossorigin="anonymous"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/scores.js"></script>
   </div>
 </body>
 

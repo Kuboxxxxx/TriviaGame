@@ -52,6 +52,7 @@
   text-shadow: 8px 5px 6px rgba(111, 156, 235, 1);
   font-weight: 900;
   font-size: var(--paddingLg);
+  text-decoration: none;
 }
 
 /* Form styles */
@@ -100,7 +101,8 @@
   padding: var(--paddingMd);
 }
 
-.hero p {
+.hero p,
+.table {
   color: var(--lightBlue1);
   font-size: var(--paddingMd);
   text-align: center;
@@ -154,4 +156,8 @@ footer {
   text-align: center;
   padding: var(--paddingMd);
   color: var(--lightBlue1);
+}
+
+#timer {
+  height: 20px;
 }

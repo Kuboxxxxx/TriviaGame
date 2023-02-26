@@ -1,15 +1,15 @@
-const scoresTable = document.getElementById("scores")
+const scoresTable = document.getElementById("scores");
 
 const renderScores = () => {
-  const scores = JSON.parse(localStorage.getItem("saves"))
+  const scores = JSON.parse(localStorage.getItem("saves"));
 
-  scores.forEach(element => {
+  scores.forEach((element) => {
     scoresTable.innerHTML += `<tr>
     <td>${element.name}</td>
     <td>${element.diff}</td>
     <td>${element.score}</td>
-  </tr>`
+  </tr>`;
   });
-}
+};
 
-window.addEventListener("load", renderScores)
+window.addEventListener("load", renderScores);
