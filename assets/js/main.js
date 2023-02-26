@@ -17,11 +17,10 @@ let time = 60;
 
 const startGame = (event) => {
   event.preventDefault();
-  const name = document.getElementById("name")
-  if (!name.value){
-    alert("Please enter your name!")
-  }
-  else{
+  const name = document.getElementById("name");
+  if (!name.value) {
+    alert("Please enter your name!");
+  } else {
     makeSaveFile();
     getQuestions();
   }
@@ -164,6 +163,7 @@ const checkAnswer = (answer, correct, timer, event) => {
           clearQuestion();
           renderQuestion(gameState.questionNum);
         } else {
+          clearQuestion();
           renderFinalScreen();
           saveSaveFile();
         }
@@ -173,6 +173,7 @@ const checkAnswer = (answer, correct, timer, event) => {
         clearQuestion();
         renderQuestion(gameState.questionNum);
       } else {
+        clearQuestion;
         renderFinalScreen();
         saveSaveFile();
       }
