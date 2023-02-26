@@ -72,17 +72,31 @@ const renderQuestion = (questionNum) => {
   const categoryDiv = document.createElement("div");
   categoryDiv.textContent = questions[questionNum].category;
 
+  const timerDiv = document.createElement("div");
+  timerDiv.setAttribute("id", "timer");
+  const countdown = () => {
+    const timerDisplay = document.getElementById("timer");
+    timerDisplay.innerHTML = time;
+    time--;
+    if (time == -1) {
+      checkAnswer(NaN, NaN, timer, "skip");
+    } else if (time <= 9) {
+      timerDisplay.classList.add("text-danger");
+    }
+  };
+  const timer = setInterval(countdown, 1000);
+
   const questionDiv = document.createElement("div");
   questionDiv.textContent = questions[questionNum].question;
 
-  questionsDiv.append(categoryDiv, questionDiv);
+  questionsDiv.append(categoryDiv, questionDiv, timerDiv);
 
   const answersDiv = document.createElement("div");
   answersDiv.setAttribute("class", "list-group");
 
   answers.forEach((answer) => {
-    const handleAnswer = () => {
-      checkAnswer(answer, correctAnswer);
+    const handleAnswer = (event) => {
+      checkAnswer(answer, correctAnswer, timer, event);
     };
 
     const button = document.createElement("button");
@@ -111,27 +125,51 @@ const shuffleAnswers = (array) => {
   return array;
 };
 
-const checkAnswer = (answer, correct) => {
+const checkAnswer = (answer, correct, timer, event) => {
   if (answer == correct) {
     gameState.score++;
     gameState.questionNum++;
-    if (gameState.questionNum < 20) {
-      clearQuestion();
-      renderQuestion(gameState.questionNum);
-    } else {
-      clearQuestion();
-      renderFinalScreen();
-      saveSaveFile();
-    }
+    clearInterval(timer);
+    time = 60;
+    event.target.setAttribute(
+      "style",
+      "background-color: #198754; color: #fff;"
+    );
+    setTimeout(() => {
+      if (gameState.questionNum < 20) {
+        clearQuestion();
+        renderQuestion(gameState.questionNum);
+      } else {
+        renderFinalScreen();
+        saveSaveFile();
+      }
+    }, 3000);
   } else {
     gameState.questionNum++;
-    if (gameState.questionNum < 20) {
-      clearQuestion();
-      renderQuestion(gameState.questionNum);
+    clearInterval(timer);
+    time = 60;
+    if (event != "skip") {
+      event.target.setAttribute(
+        "style",
+        "background-color: #dc3545; color: #fff;"
+      );
+      setTimeout(() => {
+        if (gameState.questionNum < 20) {
+          clearQuestion();
+          renderQuestion(gameState.questionNum);
+        } else {
+          renderFinalScreen();
+          saveSaveFile();
+        }
+      }, 3000);
     } else {
-      clearQuestion();
-      renderFinalScreen();
-      saveSaveFile();
+      if (gameState.questionNum < 20) {
+        clearQuestion();
+        renderQuestion(gameState.questionNum);
+      } else {
+        renderFinalScreen();
+        saveSaveFile();
+      }
     }
   }
 };
@@ -184,18 +222,6 @@ const saveSaveFile = () => {
 const errorHandler = (error) => {
   console.error(error);
 };
-
-const countdown = () => {
-  const timerDisplay = document.getElementById("timer");
-  timerDisplay.innerHTML = time;
-  time--;
-  if (time == -1) {
-    clearInterval(timer);
-    timerDisplay.innerHTML = "Time out!";
-  }
-};
-
-const timer = setInterval(countdown, 1000);
 
 //starts game when button pressed
 formBtn.addEventListener("click", startGame);
